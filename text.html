@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clock Example</title>
+  <style>
+    #time {
+      font-size: 24px;
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="time">Time will appear here</div>
+  <button onclick="stopClock()">Close Time</button>
+
+  <script>
+    let clockInterval;
+
+    function updateTime() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString();
+      document.getElementById("time").textContent = timeString;
+    }
+
+    function startClock() {
+      updateTime();
+      clockInterval = setInterval(updateTime, 1000);
+    }
+
+    function stopClock() {
+      clearInterval(clockInterval);
+      document.getElementById("time").textContent = "Time closed";
+    }
+
+    startClock();
+  </script>
+</body>
+</html>
